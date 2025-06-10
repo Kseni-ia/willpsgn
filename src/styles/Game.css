@@ -930,17 +930,387 @@ body {
   }
 }
 
-@media (max-width: 600px) {
-  .exercise-preview {
-    grid-template-columns: 1fr;
-    max-width: 300px;
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .game-container {
+    padding: 20px;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 15px;
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+  }
+
+  .stats {
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  .stat {
+    padding: 10px 15px;
+    min-width: 80px;
+  }
+
+  .stat-value {
+    font-size: 1.4em;
+  }
+
+  .stat-label {
+    font-size: 0.8em;
+  }
+
+  /* Welcome Screen Mobile */
+  .welcome-screen {
+    padding: 20px 10px;
+    min-height: 300px;
   }
 
   .welcome-content {
-    padding: 30px 25px;
+    padding: 25px 20px;
+    border-radius: 15px;
   }
 
   .welcome-content h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+  }
+
+  .welcome-description {
+    font-size: 1em;
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+
+  .exercise-preview {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 280px;
+    margin: 20px auto;
+  }
+
+  .preview-item {
+    padding: 15px;
+    font-size: 1em;
+    gap: 8px;
+  }
+
+  .preview-icon {
+    font-size: 1.5em;
+  }
+
+  .welcome-info {
+    margin: 20px 0;
+    padding: 15px;
+  }
+
+  .info-highlight {
+    font-size: 1em;
+  }
+
+  .start-btn {
+    padding: 15px 30px;
+    font-size: 1.1em;
+  }
+
+  /* Definition Match Mobile */
+  .match-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .word-item,
+  .definition-item {
+    padding: 12px;
+    font-size: 0.9em;
+    margin: 5px 0;
+  }
+
+  /* Synonym/Antonym Exercise Mobile */
+  .exercise-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .exercise-left {
+    flex: 1;
+  }
+
+  .exercise-right {
+    flex: 1;
+    min-width: 100%;
+  }
+
+  .word-progress {
+    font-size: 1em;
+    margin-bottom: 15px;
+  }
+
+  .word-row {
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  .word-label {
+    font-size: 0.9em;
+    text-align: left;
+  }
+
+  .word-value {
+    font-size: 1.2em;
+    padding: 10px 15px;
+    text-align: center;
+  }
+
+  .input-field {
+    font-size: 1em;
+    padding: 12px 15px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .game-btn,
+  .skip-btn,
+  .next-word-btn {
+    padding: 12px 20px;
+    font-size: 1em;
+    width: 100%;
+  }
+
+  .feedback {
+    padding: 15px;
+    font-size: 0.9em;
+    margin-top: 15px;
+  }
+
+  .hint {
+    font-size: 0.8em;
+    margin-top: 10px;
+  }
+
+  /* Memory Game Mobile */
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .card {
+    aspect-ratio: 1;
+    min-height: 80px;
+  }
+
+  .card-front,
+  .card-back {
+    font-size: 0.9em;
+    padding: 5px;
+  }
+
+  .game-header {
+    margin-bottom: 15px;
+  }
+
+  .game-completed,
+  .game-instruction {
+    font-size: 0.9em;
+    padding: 15px;
+  }
+
+  .restart-btn {
+    padding: 10px 20px;
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+
+  /* Exercise Title and Progress */
+  .exercise-title {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+  }
+
+  .progress-bar {
+    height: 6px;
+    margin-bottom: 15px;
+  }
+
+  /* Mistake Counter Mobile */
+  .mistake-counter {
+    margin: 10px 0;
+  }
+
+  .mistakes {
+    padding: 6px 12px;
+    font-size: 0.9em;
+  }
+
+  /* Game Over Mobile */
+  .game-over-animation {
+    padding: 25px 20px;
+    max-width: 320px;
+    border-radius: 15px;
+  }
+
+  .game-over-animation h2 {
     font-size: 2em;
+    margin-bottom: 15px;
+  }
+
+  .game-over-animation p {
+    font-size: 1em;
+    margin-bottom: 12px;
+  }
+
+  .game-over-buttons {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .game-over-buttons .game-btn,
+  .game-over-buttons .back-btn {
+    padding: 12px 20px;
+    font-size: 1em;
+    width: 100%;
+  }
+
+  /* Back Button Mobile */
+  .back-btn {
+    padding: 12px 25px;
+    font-size: 0.9em;
+    margin-top: 20px;
+  }
+
+  /* Completion Message Mobile */
+  .completion-message {
+    padding: 15px;
+    font-size: 1em;
+    margin: 10px 0;
+    border-radius: 10px;
+  }
+
+  .completion-buttons {
+    padding: 15px;
+    border-radius: 10px;
+  }
+}
+
+/* Extra Small Mobile Screens (phones in portrait) */
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+
+  .game-container {
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .title {
+    font-size: 1.5em;
+  }
+
+  .stats {
+    gap: 10px;
+    justify-content: space-around;
+  }
+
+  .stat {
+    padding: 8px 12px;
+    min-width: 70px;
+  }
+
+  .stat-value {
+    font-size: 1.2em;
+  }
+
+  .stat-label {
+    font-size: 0.75em;
+  }
+
+  .welcome-content {
+    padding: 20px 15px;
+  }
+
+  .welcome-content h2 {
+    font-size: 1.6em;
+  }
+
+  .welcome-description {
+    font-size: 0.9em;
+  }
+
+  .exercise-preview {
+    max-width: 250px;
+  }
+
+  .preview-item {
+    padding: 12px;
+    font-size: 0.9em;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .preview-icon {
+    font-size: 1.3em;
+  }
+
+  .word-item,
+  .definition-item {
+    padding: 10px;
+    font-size: 0.85em;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .card {
+    min-height: 70px;
+  }
+
+  .card-front,
+  .card-back {
+    font-size: 0.8em;
+    padding: 3px;
+  }
+
+  .input-field {
+    font-size: 0.9em;
+    padding: 10px 12px;
+  }
+
+  .word-value {
+    font-size: 1.1em;
+    padding: 8px 12px;
+  }
+
+  .feedback {
+    padding: 12px;
+    font-size: 0.85em;
+  }
+
+  .game-over-animation {
+    padding: 20px 15px;
+    max-width: 280px;
+  }
+
+  .game-over-animation h2 {
+    font-size: 1.8em;
   }
 }
