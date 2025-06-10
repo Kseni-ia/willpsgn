@@ -19,7 +19,6 @@ const AntonymExercise: React.FC<AntonymExerciseProps> = ({
   >(null);
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [exerciseCompleted, setExerciseCompleted] = useState(false);
 
   const currentWord = words[currentWordIndex];
@@ -129,7 +128,6 @@ const AntonymExercise: React.FC<AntonymExerciseProps> = ({
       setFeedback("correct");
       setFeedbackMessage("Excellent! That's a perfect antonym!");
       setCorrectAnswers((prev) => prev + 1);
-      setQuestionsAnswered((prev) => prev + 1);
       onAnswer(true);
 
       // Auto-advance for correct answers
@@ -146,7 +144,6 @@ const AntonymExercise: React.FC<AntonymExerciseProps> = ({
           `Very close! You wrote "${userInput}" - the exact form is "${closeMatch}"`
         );
         setCorrectAnswers((prev) => prev + 1);
-        setQuestionsAnswered((prev) => prev + 1);
         onAnswer(true);
 
         // Auto-advance for close answers
@@ -158,7 +155,6 @@ const AntonymExercise: React.FC<AntonymExerciseProps> = ({
         setFeedbackMessage(
           `Not quite right. Try thinking of words that mean the opposite of "${currentWord.word}"`
         );
-        setQuestionsAnswered((prev) => prev + 1);
         onAnswer(false);
 
         // Do NOT auto-advance for incorrect answers - user must click "Next Word"
@@ -172,7 +168,6 @@ const AntonymExercise: React.FC<AntonymExerciseProps> = ({
     setFeedback(null);
     setFeedbackMessage("");
     setCorrectAnswers(0);
-    setQuestionsAnswered(0);
     setExerciseCompleted(false);
   };
 

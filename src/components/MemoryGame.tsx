@@ -17,24 +17,8 @@ interface Card {
 const MemoryGame: React.FC<MemoryGameProps> = ({ words, onAnswer }) => {
   const [cards, setCards] = useState<Card[]>([]);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
-  const [timeElapsed, setTimeElapsed] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [gameCompleted, setGameCompleted] = useState(false);
-
-  // Timer effect
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-
-    if (gameStarted && !gameCompleted) {
-      interval = setInterval(() => {
-        setTimeElapsed((prev) => prev + 1);
-      }, 1000);
-    }
-
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [gameStarted, gameCompleted]);
 
   // Check if game is completed
   useEffect(() => {
@@ -73,7 +57,6 @@ const MemoryGame: React.FC<MemoryGameProps> = ({ words, onAnswer }) => {
     setCards(newCards.sort(() => Math.random() - 0.5));
 
     // Reset game state
-    setTimeElapsed(0);
     setGameStarted(false);
     setGameCompleted(false);
     setFlippedCards([]);
@@ -149,12 +132,6 @@ const MemoryGame: React.FC<MemoryGameProps> = ({ words, onAnswer }) => {
     }
   };
 
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, "0")}`;
-  };
-
   const restartGame = () => {
     // Shuffle cards again
     setCards((prevCards) => {
@@ -166,7 +143,6 @@ const MemoryGame: React.FC<MemoryGameProps> = ({ words, onAnswer }) => {
       return resetCards.sort(() => Math.random() - 0.5);
     });
 
-    setTimeElapsed(0);
     setGameStarted(false);
     setGameCompleted(false);
     setFlippedCards([]);

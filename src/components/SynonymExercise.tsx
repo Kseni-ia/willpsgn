@@ -57,10 +57,6 @@ const SynonymExercise: React.FC<SynonymExerciseProps> = ({
     } else {
       // Exercise completed
       setExerciseCompleted(true);
-      const percentage =
-        words.length > 0
-          ? Math.round((correctAnswers / words.length) * 100)
-          : 0;
       setFeedback("correct");
     }
   };
