@@ -224,7 +224,6 @@ const vocabularyData: Word[] = [
 
 const App: React.FC = () => {
   const [gameState, setGameState] = useState<GameState>(initialGameState);
-  const [exerciseStartTime, setExerciseStartTime] = useState<number>(0);
   const [currentScore, setCurrentScore] = useState<number>(0);
   const [mistakes, setMistakes] = useState<number>(0);
   const [gameOver, setGameOver] = useState<boolean>(false);
@@ -242,7 +241,6 @@ const App: React.FC = () => {
         type === "memory" ? shuffledWords.slice(0, 6) : shuffledWords,
       matchedPairs: new Set(),
     }));
-    setExerciseStartTime(Date.now());
     setCurrentScore(0);
     setMistakes(0);
     setGameOver(false);
@@ -256,7 +254,6 @@ const App: React.FC = () => {
       selectedWords: [],
       matchedPairs: new Set(),
     }));
-    setExerciseStartTime(0);
     setCurrentScore(0);
     setMistakes(0);
     setGameOver(false);
