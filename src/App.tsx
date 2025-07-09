@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./styles/Game.css";
 import { GameState, Word, GameStats, ExerciseType } from "./types/game";
 import DefinitionMatch from "./components/DefinitionMatch";
@@ -226,32 +226,9 @@ const App: React.FC = () => {
   const [gameState, setGameState] = useState<GameState>(initialGameState);
   const [exerciseStartTime, setExerciseStartTime] = useState<number>(0);
   const [currentScore, setCurrentScore] = useState<number>(0);
-  const [currentTime, setCurrentTime] = useState<string>("00:00");
   const [mistakes, setMistakes] = useState<number>(0);
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [showWordList, setShowWordList] = useState<boolean>(false);
-
-  // Timer effect to update time every second
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-
-    if (gameState.currentExercise && exerciseStartTime && !gameOver) {
-      interval = setInterval(() => {
-        const elapsed = Math.floor((Date.now() - exerciseStartTime) / 1000);
-        const minutes = Math.floor(elapsed / 60);
-        const seconds = elapsed % 60;
-        setCurrentTime(
-          `${minutes.toString().padStart(2, "0")}:${seconds
-            .toString()
-            .padStart(2, "0")}`
-        );
-      }, 1000);
-    }
-
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [gameState.currentExercise, exerciseStartTime, gameOver]);
 
   const startExercise = (type: ExerciseType) => {
     // Shuffle words for variety - different starting point each time
@@ -267,7 +244,6 @@ const App: React.FC = () => {
     }));
     setExerciseStartTime(Date.now());
     setCurrentScore(0);
-    setCurrentTime("00:00");
     setMistakes(0);
     setGameOver(false);
   };
@@ -282,7 +258,6 @@ const App: React.FC = () => {
     }));
     setExerciseStartTime(0);
     setCurrentScore(0);
-    setCurrentTime("00:00");
     setMistakes(0);
     setGameOver(false);
     setShowWordList(false);
@@ -335,36 +310,6 @@ const App: React.FC = () => {
         stats: newStats,
       };
     });
-  };
-
-  // Calculate progress percentage based on exercise type
-  const getProgressPercentage = () => {
-    if (!gameState.currentExercise || gameState.selectedWords.length === 0) {
-      return "0%";
-    }
-
-    switch (gameState.currentExercise) {
-      case "memory":
-        // For memory game: matched pairs / total pairs
-        const totalPairs = gameState.selectedWords.length;
-        const matchedPairs = gameState.matchedPairs.size;
-        return `${Math.round((matchedPairs / totalPairs) * 100)}%`;
-
-      case "synonym":
-      case "antonym":
-        // For these exercises: correct answers / total words
-        const totalWords = gameState.selectedWords.length;
-        return `${Math.round((currentScore / totalWords) * 100)}%`;
-
-      case "definition":
-        // For definition match: use current score (which reflects actual matches)
-        return `${Math.round(
-          (currentScore / gameState.selectedWords.length) * 100
-        )}%`;
-
-      default:
-        return "0%";
-    }
   };
 
   // Add function to update progress for synonym/antonym exercises
@@ -433,7 +378,6 @@ const App: React.FC = () => {
 
   return (
     <div className="game-container">
-
       {!gameState.currentExercise && !showWordList ? (
         // Welcome Screen
         <div className="welcome-screen">
