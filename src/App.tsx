@@ -21,231 +21,204 @@ const initialGameState: GameState = {
   matchedPairs: new Set(),
 };
 
-// IELTS Vocabulary data from the screenshot
+// IELTS Vocabulary data - Topic 15: Signposting expressions for writing
 const vocabularyData: Word[] = [
   {
     id: 1,
-    word: "Chain reaction",
-    definition: "A series of events, each of which causes the next",
-    synonyms: ["Sequence", "Series", "Cascade"],
+    word: "Furthermore",
+    definition:
+      "Used to introduce a piece of information or opinion that adds to or supports the previous one",
+    synonyms: ["Moreover", "Additionally", "Besides"],
     antonyms: [
-      "Isolation",
-      "Single event",
-      "Independence",
-      "Separation",
-      "Individual action",
-      "Standalone",
-      "Unconnected",
+      "However",
+      "Nevertheless",
+      "Conversely",
+      "On the contrary",
+      "Instead",
+      "Alternatively",
     ],
   },
   {
     id: 2,
-    word: "Consequence",
-    definition: "The results or effects of something",
-    synonyms: ["Result", "Effect", "Outcome"],
+    word: "Moreover",
+    definition:
+      "Used to introduce a piece of information that adds to or supports the previous statement",
+    synonyms: ["Furthermore", "Additionally", "Besides"],
     antonyms: [
-      "Cause",
-      "Origin",
-      "Source",
-      "Beginning",
-      "Start",
-      "Root",
-      "Trigger",
-      "Reason",
+      "However",
+      "Nevertheless",
+      "Conversely",
+      "On the other hand",
+      "Alternatively",
+      "Instead",
     ],
   },
   {
     id: 3,
-    word: "Impact",
+    word: "Nevertheless",
     definition:
-      "A sudden and powerful effect on a situation, process, or person",
-    synonyms: ["Effect", "Influence", "Force"],
+      "Used when saying something that contrasts with what has just been said",
+    synonyms: ["However", "Nonetheless", "Still"],
     antonyms: [
-      "Weakness",
-      "Insignificance",
-      "Neglect",
-      "Powerlessness",
-      "Ineffectiveness",
-      "Gentleness",
-      "Softness",
+      "Furthermore",
+      "Moreover",
+      "Additionally",
+      "Similarly",
+      "Likewise",
+      "Therefore",
     ],
   },
   {
     id: 4,
-    word: "Influence",
-    definition: "To affect what people do or what happens in situations",
-    synonyms: ["Affect", "Sway", "Impact"],
+    word: "Whereas",
+    definition:
+      "Used to introduce a comment which contrasts with what is said in the main clause",
+    synonyms: ["While", "Although", "Though"],
     antonyms: [
-      "Independence",
-      "Autonomy",
-      "Resistance",
-      "Immunity",
-      "Freedom",
-      "Self-reliance",
+      "Similarly",
+      "Likewise",
+      "Equally",
+      "Correspondingly",
+      "In the same way",
+      "Therefore",
     ],
   },
   {
     id: 5,
-    word: "Outcome",
+    word: "Whilst",
     definition:
-      "The situation that exists at the end of an activity or process",
-    synonyms: ["Result", "End", "Conclusion"],
+      "Means the same as while, used mainly in formal and literary contexts",
+    synonyms: ["While", "Although", "Whereas"],
     antonyms: [
-      "Beginning",
-      "Start",
-      "Cause",
-      "Origin",
-      "Input",
-      "Commencement",
-      "Introduction",
+      "Similarly",
+      "Likewise",
+      "Therefore",
+      "Consequently",
+      "Hence",
+      "Thus",
     ],
   },
   {
     id: 6,
-    word: "Repercussion",
+    word: "Former",
     definition:
-      "Unpleasant things that happen as a result of an action or event",
-    synonyms: ["Consequence", "Aftermath", "Backlash"],
-    antonyms: [
-      "Benefit",
-      "Advantage",
-      "Reward",
-      "Blessing",
-      "Positive outcome",
-      "Good result",
-      "Bonus",
-    ],
+      "When two people, things, or groups have just been mentioned, you can refer to the first of them as the former",
+    synonyms: ["First", "Previous", "Earlier"],
+    antonyms: ["Latter", "Last", "Final", "Second", "Following", "Subsequent"],
   },
   {
     id: 7,
-    word: "Affect",
-    definition: "To influence or cause someone or something to change",
-    synonyms: ["Influence", "Impact", "Alter"],
-    antonyms: [
-      "Ignore",
-      "Preserve",
-      "Maintain",
-      "Leave alone",
-      "Keep unchanged",
-      "Neglect",
-      "Disregard",
-    ],
+    word: "Initial",
+    definition:
+      "Used to describe something that happens at the beginning of a process",
+    synonyms: ["First", "Opening", "Beginning"],
+    antonyms: ["Final", "Last", "Concluding", "Ultimate", "Ending", "Terminal"],
   },
   {
     id: 8,
-    word: "Contribute",
-    definition: "To be one of the causes of an event or situation",
-    synonyms: ["Add", "Help", "Assist"],
-    antonyms: [
-      "Hinder",
-      "Prevent",
-      "Block",
-      "Obstruct",
-      "Impede",
-      "Subtract",
-      "Remove",
-      "Withdraw",
-    ],
+    word: "Latter",
+    definition:
+      "When two people, things, or groups have just been mentioned, you can refer to the second of them as the latter",
+    synonyms: ["Second", "Last", "Final"],
+    antonyms: ["Former", "First", "Previous", "Earlier", "Initial", "Opening"],
   },
   {
     id: 9,
-    word: "Determine",
-    definition: "To cause something to be of a particular kind or nature",
-    synonyms: ["Decide", "Establish", "Fix"],
-    antonyms: [
-      "Ignore",
-      "Neglect",
-      "Randomize",
-      "Confuse",
-      "Uncertain",
-      "Undecided",
-      "Flexible",
-    ],
+    word: "Prior",
+    definition:
+      "Used to indicate that something has already happened, or must happen, before another event takes place",
+    synonyms: ["Before", "Earlier", "Previous"],
+    antonyms: ["After", "Following", "Subsequent", "Later", "Future", "Next"],
   },
   {
     id: 10,
-    word: "Generate",
-    definition: "To cause something to begin and develop",
-    synonyms: ["Create", "Produce", "Cause"],
+    word: "Respectively",
+    definition:
+      "Means in the same order as the items that you have just mentioned",
+    synonyms: ["Correspondingly", "In order", "Sequentially"],
     antonyms: [
-      "Destroy",
-      "Stop",
-      "End",
-      "Eliminate",
-      "Remove",
-      "Prevent",
-      "Block",
-      "Terminate",
+      "Randomly",
+      "Haphazardly",
+      "Irregularly",
+      "Chaotically",
+      "Unsystematically",
+      "Arbitrarily",
     ],
   },
   {
     id: 11,
-    word: "Induce",
-    definition: "To cause a state or condition",
-    synonyms: ["Cause", "Bring about", "Lead to"],
+    word: "Subsequent",
+    definition:
+      "Used to describe something that happened or existed after the time or event that has just been referred to",
+    synonyms: ["Following", "Later", "Next"],
     antonyms: [
-      "Prevent",
-      "Stop",
-      "Block",
-      "Discourage",
-      "Deter",
-      "Inhibit",
-      "Suppress",
+      "Prior",
+      "Previous",
+      "Earlier",
+      "Former",
+      "Preceding",
+      "Initial",
     ],
   },
   {
     id: 12,
-    word: "Provoke",
-    definition: "To cause a reaction or response",
-    synonyms: ["Trigger", "Cause", "Arouse"],
+    word: "On balance",
+    definition:
+      "Used to indicate that you are stating an opinion after considering all the relevant facts or arguments",
+    synonyms: ["Overall", "All things considered", "Generally"],
     antonyms: [
-      "Calm",
-      "Soothe",
-      "Prevent",
-      "Pacify",
-      "Appease",
-      "Comfort",
-      "Relax",
+      "Specifically",
+      "Particularly",
+      "Individually",
+      "Separately",
+      "Distinctly",
+      "Precisely",
     ],
   },
   {
     id: 13,
-    word: "Result",
-    definition: "To cause a particular situation or event to happen",
-    synonyms: ["Lead to", "Cause", "End in"],
+    word: "Overall",
+    definition:
+      "Used to indicate that you are talking about a situation in general or about the whole of something",
+    synonyms: ["Generally", "All in all", "On balance"],
     antonyms: [
-      "Cause",
-      "Beginning",
-      "Start",
-      "Origin",
-      "Unfinished",
-      "Incomplete",
-      "Ongoing",
-      "Process",
-      "Input",
+      "Specifically",
+      "Particularly",
+      "Individually",
+      "Separately",
+      "Partially",
+      "Locally",
     ],
   },
   {
     id: 14,
-    word: "Stem",
-    definition: "To originate or be caused by something",
-    synonyms: ["Arise", "Originate", "Spring"],
+    word: "Hence",
+    definition:
+      "Used to indicate that the statement you are about to make is a consequence of what you have just said",
+    synonyms: ["Therefore", "Thus", "Consequently"],
     antonyms: [
-      "End",
-      "Finish",
-      "Conclude",
-      "Terminate",
-      "Result",
-      "Lead to",
-      "Cause",
+      "However",
+      "Nevertheless",
+      "Despite this",
+      "Regardless",
+      "Notwithstanding",
+      "Still",
     ],
   },
   {
     id: 15,
-    word: "Trigger",
-    definition: "To cause an event or situation to begin",
-    synonyms: ["Cause", "Start", "Activate"],
-    antonyms: ["Stop", "Prevent", "End", "Finish", "Halt", "Block", "Inhibit"],
+    word: "Thus",
+    definition:
+      "Used to show that what you are about to mention is the result or consequence of something else that you have just mentioned",
+    synonyms: ["Therefore", "Hence", "Consequently"],
+    antonyms: [
+      "However",
+      "Nevertheless",
+      "Despite this",
+      "Regardless",
+      "Conversely",
+      "Instead",
+    ],
   },
 ];
 
@@ -256,6 +229,7 @@ const App: React.FC = () => {
   const [currentTime, setCurrentTime] = useState<string>("00:00");
   const [mistakes, setMistakes] = useState<number>(0);
   const [gameOver, setGameOver] = useState<boolean>(false);
+  const [showWordList, setShowWordList] = useState<boolean>(false);
 
   // Timer effect to update time every second
   useEffect(() => {
@@ -311,6 +285,11 @@ const App: React.FC = () => {
     setCurrentTime("00:00");
     setMistakes(0);
     setGameOver(false);
+    setShowWordList(false);
+  };
+
+  const showWordListView = () => {
+    setShowWordList(true);
   };
 
   const restartCurrentExercise = () => {
@@ -454,53 +433,15 @@ const App: React.FC = () => {
 
   return (
     <div className="game-container">
-      <div className="header">
-        <h1 className="title">Vocabulary Master Game</h1>
-        <div className="stats">
-          {!gameState.currentExercise ? (
-            // Welcome screen - show welcome info
-            <>
-              <div className="stat">
-                <div className="stat-value">Welcome</div>
-                <div className="stat-label">IELTS Practice</div>
-              </div>
-              <div className="stat">
-                <div className="stat-value">15</div>
-                <div className="stat-label">Vocabulary Words</div>
-              </div>
-              <div className="stat">
-                <div className="stat-value">Ready?</div>
-                <div className="stat-label">Let's Begin</div>
-              </div>
-            </>
-          ) : (
-            // During exercise - show scores and timer
-            <>
-              <div className="stat">
-                <div className="stat-value">{currentScore}</div>
-                <div className="stat-label">Score</div>
-              </div>
-              <div className="stat">
-                <div className="stat-value">{currentTime}</div>
-                <div className="stat-label">Time</div>
-              </div>
-              <div className="stat">
-                <div className="stat-value">{getProgressPercentage()}</div>
-                <div className="stat-label">Progress</div>
-              </div>
-            </>
-          )}
-        </div>
-      </div>
 
-      {!gameState.currentExercise ? (
+      {!gameState.currentExercise && !showWordList ? (
         // Welcome Screen
         <div className="welcome-screen">
           <div className="welcome-content">
             <h2>Welcome to IELTS Vocabulary Practice!</h2>
             <p className="welcome-description">
-              Master 15 essential IELTS vocabulary words through 4 interactive
-              exercises:
+              Master 15 essential signposting expressions for writing through 4
+              interactive exercises:
             </p>
             <div className="exercise-preview">
               <div
@@ -534,16 +475,55 @@ const App: React.FC = () => {
             </div>
             <div className="welcome-info">
               <p className="info-highlight">
-                📚 Topic 14: Cause and Effect Vocabulary
+                📚 Topic 15: Signposting expressions for writing
               </p>
+              <div className="word-list-section">
+                <div
+                  className="preview-item word-list-button centered"
+                  onClick={showWordListView}
+                >
+                  <span className="preview-icon">📝</span>
+                  <span>Word List</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : showWordList ? (
+        // Word List View
+        <div className="word-list-container">
+          <div className="word-list-content">
+            <h2>📝 Vocabulary Reference List</h2>
+            <p className="word-list-description">
+              Study all 15 signposting expressions before starting the
+              exercises:
+            </p>
+            <div className="word-list-grid">
+              {vocabularyData.map((word, index) => (
+                <div key={word.id} className="word-card">
+                  <div className="word-number">{index + 1}</div>
+                  <div className="word-term">{word.word}</div>
+                  <div className="word-definition">{word.definition}</div>
+                  <div className="word-synonyms">
+                    <strong>Synonyms:</strong> {word.synonyms.join(", ")}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="word-list-actions">
+              <button className="back-btn" onClick={goBackToMenu}>
+                Back to Menu
+              </button>
             </div>
           </div>
         </div>
       ) : (
         <div className="exercise active">
           <h2 className="exercise-title">
-            {gameState.currentExercise.charAt(0).toUpperCase() +
-              gameState.currentExercise.slice(1)}{" "}
+            {gameState.currentExercise
+              ? gameState.currentExercise.charAt(0).toUpperCase() +
+                gameState.currentExercise.slice(1)
+              : "Exercise"}{" "}
             Exercise
           </h2>
           <div className="progress-bar">

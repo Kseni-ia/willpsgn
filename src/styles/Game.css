@@ -18,7 +18,6 @@ body {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 30px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   max-width: 900px;
   width: 100%;
@@ -1312,5 +1311,209 @@ body {
 
   .game-over-animation h2 {
     font-size: 1.8em;
+  }
+}
+
+/* Word List Styles */
+.word-list-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 20px;
+}
+
+.word-list-content {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.word-list-content h2 {
+  font-size: 2em;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.word-list-description {
+  font-size: 1.1em;
+  color: #6c757d;
+  text-align: center;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.word-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.word-card {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 15px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.word-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: #667eea;
+}
+
+.word-number {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9em;
+}
+
+.word-term {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  padding-right: 40px; /* Make room for the number */
+}
+
+.word-definition {
+  font-size: 1em;
+  color: #495057;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.word-synonyms {
+  font-size: 0.9em;
+  color: #667eea;
+  padding: 10px;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.word-synonyms strong {
+  color: #2c3e50;
+}
+
+.word-list-actions {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.word-list-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.word-list-button.preview-item {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.word-list-button.preview-item.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.word-list-button.preview-item:hover {
+  background: linear-gradient(135deg, #218838, #1abc9c);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+}
+
+/* Responsive Design for Word List */
+@media (max-width: 768px) {
+  .word-list-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .word-card {
+    padding: 15px;
+  }
+
+  .word-term {
+    font-size: 1.2em;
+  }
+
+  .word-list-content h2 {
+    font-size: 1.6em;
+  }
+
+  .word-list-description {
+    font-size: 1em;
+  }
+
+  .word-list-section {
+    margin-top: 15px;
+  }
+
+  .word-list-button.preview-item {
+    max-width: 180px;
+    padding: 12px 20px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .word-list-container {
+    padding: 20px;
+  }
+
+  .word-card {
+    padding: 12px;
+  }
+
+  .word-number {
+    width: 25px;
+    height: 25px;
+    font-size: 0.8em;
+  }
+
+  .word-term {
+    font-size: 1.1em;
+    padding-right: 35px;
+  }
+
+  .word-definition {
+    font-size: 0.9em;
+  }
+
+  .word-synonyms {
+    font-size: 0.85em;
+    padding: 8px;
+  }
+
+  .word-list-section {
+    margin-top: 10px;
+  }
+
+  .word-list-button.preview-item {
+    max-width: 160px;
+    padding: 10px 16px;
+    font-size: 0.85em;
+  }
+
+  .word-list-button.preview-item .preview-icon {
+    font-size: 1.2em;
   }
 }
