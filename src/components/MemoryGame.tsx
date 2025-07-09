@@ -20,6 +20,16 @@ const MemoryGame: React.FC<MemoryGameProps> = ({ words, onAnswer }) => {
   const [gameStarted, setGameStarted] = useState(false);
   const [gameCompleted, setGameCompleted] = useState(false);
 
+  // Fisher-Yates shuffle algorithm for proper randomization
+  const shuffleArray = <T,>(array: T[]): T[] => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
   // Check if game is completed
   useEffect(() => {
     if (cards.length > 0 && cards.every((card) => card.isMatched)) {
@@ -41,9 +51,9 @@ const MemoryGame: React.FC<MemoryGameProps> = ({ words, onAnswer }) => {
         isMatched: false,
       });
 
-      // Add a random synonym for each word
-      const randomSynonym =
-        word.synonyms[Math.floor(Math.random() * word.synonyms.length)];
+      // Add a random synonym for each word (re-randomized each game)
+      const shuffledSynonyms = shuffleArray([...word.synonyms]);
+      const randomSynonym = shuffledSynonyms[0];
       newCards.push({
         id: word.id,
         content: randomSynonym,
@@ -53,8 +63,8 @@ const MemoryGame: React.FC<MemoryGameProps> = ({ words, onAnswer }) => {
       });
     });
 
-    // Shuffle the cards
-    setCards(newCards.sort(() => Math.random() - 0.5));
+    // Properly shuffle the cards using Fisher-Yates algorithm
+    setCards(shuffleArray(newCards));
 
     // Reset game state
     setGameStarted(false);
@@ -133,15 +143,33 @@ const MemoryGame: React.FC<MemoryGameProps> = ({ words, onAnswer }) => {
   };
 
   const restartGame = () => {
-    // Shuffle cards again
-    setCards((prevCards) => {
-      const resetCards = prevCards.map((card) => ({
-        ...card,
+    // Re-create and shuffle cards with new random synonyms
+    const newCards: Card[] = [];
+
+    words.forEach((word) => {
+      // Add the vocabulary word
+      newCards.push({
+        id: word.id,
+        content: word.word,
+        type: "word",
         isFlipped: false,
         isMatched: false,
-      }));
-      return resetCards.sort(() => Math.random() - 0.5);
+      });
+
+      // Add a different random synonym for variety
+      const shuffledSynonyms = shuffleArray([...word.synonyms]);
+      const randomSynonym = shuffledSynonyms[0];
+      newCards.push({
+        id: word.id,
+        content: randomSynonym,
+        type: "synonym",
+        isFlipped: false,
+        isMatched: false,
+      });
     });
+
+    // Properly shuffle the cards using Fisher-Yates algorithm
+    setCards(shuffleArray(newCards));
 
     setGameStarted(false);
     setGameCompleted(false);
